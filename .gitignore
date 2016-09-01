@@ -4,3 +4,4 @@
 /target/classes
 /target/test-classes/org/seckill/dao
 /target/m2e-wtp/web-resources/META-INF
+/target/test-classes

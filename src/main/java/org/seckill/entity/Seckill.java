@@ -13,11 +13,22 @@ import java.util.Date;
  */
 public class Seckill {
 
+    /**  */
     private long   seckillId;
+
+    /**  */
     private String name;
+
+    /**  */
     private int    number;
+
+    /**  */
     private Date   startTime;
+
+    /**  */
     private Date   endTime;
+
+    /**  */
     private Date   createTime;
 
     public Seckill() {
@@ -130,6 +141,19 @@ public class Seckill {
      */
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder s = new StringBuilder("{");
+        s.append("\"seckillId\":\"" + seckillId);
+        s.append("\",\"name\":\"" + name);
+        s.append("\",\"number\":\"" + number);
+        s.append("\",\"startTime\":\"" + startTime);
+        s.append("\",\"endTime\":\"" + endTime);
+        s.append("\",\"createTime\":\"" + createTime);
+        s.append("\"}");
+        return s.toString();
     }
 
 }

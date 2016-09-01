@@ -13,13 +13,19 @@ import java.util.Date;
  */
 public class SuccessKilled {
 
+    /**  */
     private long    seckillId;
+
+    /**  */
     private long    userPhone;
 
+    /**  */
     private short   state;
 
+    /**  */
     private Date    createTime;
 
+    /**  */
     private Seckill seckill;
 
     public SuccessKilled() {
@@ -114,6 +120,18 @@ public class SuccessKilled {
      */
     public void setSeckill(Seckill seckill) {
         this.seckill = seckill;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder s = new StringBuilder("{");
+        s.append("\"seckillId\":\"" + seckillId);
+        s.append("\",\"userPhone\":\"" + userPhone);
+        s.append("\",\"state\":\"" + state);
+        s.append("\",\"createTime\":\"" + createTime);
+        s.append("\",\"seckill\":" + seckill);
+        s.append("}");
+        return s.toString();
     }
 
 }
