@@ -4,6 +4,7 @@
  */
 package org.seckill.dao;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.seckill.entity.Seckill;
@@ -31,14 +32,15 @@ public class SeckillDaoTest {
      */
     @Test
     public void testReduceNumber() throws Exception {
-        long id = 1000;
-        Seckill seckill = seckillDao.queryById(id);
-        System.out.println(seckill.getName());
+
     }
 
     @Test
     public void testQueryById() throws Exception {
-
+        long id = 1000;
+        Seckill seckill = seckillDao.queryById(id);
+        System.out.println(seckill.getName());
+        Assert.assertEquals(seckill.getName(), "1000元秒杀iphone6");
     }
 
     @Test
