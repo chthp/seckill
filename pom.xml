@@ -20,7 +20,7 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- 一：日志。使用slf4j接口规范+logback -->
+		<!-- ################################# 一：日志。使用slf4j接口规范+logback  ################################# -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
@@ -38,7 +38,7 @@
 			<version>1.1.1</version>
 		</dependency>
 
-		<!-- 二、数据库 驱动。 -->
+		<!-- ################################# 二、数据库 驱动。  ################################# -->
 		<!-- mysql数据库驱动 -->
 		<dependency>
 			<groupId>mysql</groupId>
@@ -53,7 +53,7 @@
 			<version>0.9.1.2</version>
 		</dependency>
 
-		<!-- DAO框架：mybatis框架 -->
+		<!-- DAO框架：mybatis框架核心包 -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
@@ -66,12 +66,13 @@
 			<version>1.2.3</version>
 		</dependency>
 
-		<!-- 三、sevlet web 相关依赖 -->
+		<!-- ################################# 三、sevlet web 相关依赖  ################################# -->
 		<dependency>
 			<groupId>taglibs</groupId>
 			<artifactId>standard</artifactId>
 			<version>1.1.2</version>
 		</dependency>
+		<!-- JSTL标签类 -->
 		<dependency>
 			<groupId>jstl</groupId>
 			<artifactId>jstl</artifactId>
@@ -88,7 +89,7 @@
 			<version>3.1.0</version>
 		</dependency>
 
-		<!-- 四、spring依赖 -->
+		<!-- ################################# 四、spring依赖  ################################# -->
 		<!-- 1）spring核心依赖 -->
 		<dependency>
 			<groupId>org.springframework</groupId>
