@@ -13,12 +13,16 @@ import org.seckill.dto.Exposer;
 import org.seckill.dto.SeckillExecution;
 import org.seckill.entity.Seckill;
 import org.seckill.entity.SuccessKilled;
+import org.seckill.enums.SeckkillStateEnum;
 import org.seckill.exception.RepeatKillException;
 import org.seckill.exception.SeckillCloseException;
 import org.seckill.exception.SeckillException;
 import org.seckill.service.SeckillService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 
 /**
@@ -26,15 +30,18 @@ import org.springframework.util.DigestUtils;
  * @author wb-dumao
  * @version $Id: SeckillServiceImpl.java, v 0.1 2016年9月1日 下午5:46:31 wb-dumao Exp $
  */
+@Service
 public class SeckillServiceImpl implements SeckillService {
 
     /** logger */
     private Logger           logger = LoggerFactory.getLogger(this.getClass());
 
     /**  */
+    @Autowired
     private SeckillDao       seckillDao;
 
     /**  */
+    @Autowired
     private SuccessKilledDao successKilledDao;
 
     /** 盐 */
@@ -77,23 +84,10 @@ public class SeckillServiceImpl implements SeckillService {
         return new Exposer(true, md5, seckillId);
     }
 
-    /**
-     * 
-     * @param seckillId
-     * @return
-     */
-    private String getMd5(long seckillId) {
-        String base = seckillId + "/" + slat;
-        String md5 = DigestUtils.md5DigestAsHex(base.getBytes());
-        return md5;
-    }
-
     /** 
      * @see org.seckill.service.SeckillService#executeSeckill(long, long, java.lang.String)
      */
-    /** 
-     * @see org.seckill.service.SeckillService#executeSeckill(long, long, java.lang.String)
-     */
+    @Transactional
     public SeckillExecution executeSeckill(long seckillId, long userPhone,
                                            String md5) throws SeckillException, RepeatKillException,
                                                        SeckillCloseException {
@@ -122,7 +116,7 @@ public class SeckillServiceImpl implements SeckillService {
             SuccessKilled successKilled = successKilledDao.queryByIdWithSeckill(seckillId,
                 userPhone);
 
-            return new SeckillExecution(seckillId, 1, "秒杀成功", successKilled);
+            return new SeckillExecution(seckillId, SeckkillStateEnum.SUCCESS, successKilled);
 
         } catch (SeckillCloseException e1) {
             throw e1;
@@ -132,6 +126,17 @@ public class SeckillServiceImpl implements SeckillService {
             logger.error(e.getMessage(), e);
             throw new SeckillException("seckill error" + e.getMessage());
         }
+    }
+
+    /**
+     * 
+     * @param seckillId
+     * @return
+     */
+    private String getMd5(long seckillId) {
+        String base = seckillId + "/" + slat;
+        String md5 = DigestUtils.md5DigestAsHex(base.getBytes());
+        return md5;
     }
 
 }
