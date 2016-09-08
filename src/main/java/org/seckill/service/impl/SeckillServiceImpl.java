@@ -13,7 +13,7 @@ import org.seckill.dto.Exposer;
 import org.seckill.dto.SeckillExecution;
 import org.seckill.entity.Seckill;
 import org.seckill.entity.SuccessKilled;
-import org.seckill.enums.SeckkillStateEnum;
+import org.seckill.enums.SeckillStateEnum;
 import org.seckill.exception.RepeatKillException;
 import org.seckill.exception.SeckillCloseException;
 import org.seckill.exception.SeckillException;
@@ -34,7 +34,7 @@ import org.springframework.util.DigestUtils;
 public class SeckillServiceImpl implements SeckillService {
 
     /** logger */
-    private Logger           logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger     logger = LoggerFactory.getLogger(this.getClass());
 
     /**  */
     @Autowired
@@ -116,7 +116,7 @@ public class SeckillServiceImpl implements SeckillService {
             SuccessKilled successKilled = successKilledDao.queryByIdWithSeckill(seckillId,
                 userPhone);
 
-            return new SeckillExecution(seckillId, SeckkillStateEnum.SUCCESS, successKilled);
+            return new SeckillExecution(seckillId, SeckillStateEnum.SUCCESS, successKilled);
 
         } catch (SeckillCloseException e1) {
             throw e1;

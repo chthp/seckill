@@ -9,7 +9,7 @@ package org.seckill.enums;
  * @author wb-dumao
  * @version $Id: SeckkillStateEnum.java, v 0.1 2016年9月1日 下午6:38:30 wb-dumao Exp $
  */
-public enum SeckkillStateEnum {
+public enum SeckillStateEnum {
 
                                /**  */
                                SUCCESS(1, "秒杀成功"),
@@ -18,10 +18,10 @@ public enum SeckkillStateEnum {
                                END(0, "秒杀结束"),
 
                                /**  */
-                               REPEAT(-1, "重复秒杀"),
+                               REPEAT_KILL(-1, "重复秒杀"),
 
                                /**  */
-                               INNER_ERROR(-2, "系统异常"),
+                               INNER_ORROR(-2, "系统异常"),
 
                                /**  */
                                DATA_REWITE(-3, "数据窜改");
@@ -36,7 +36,7 @@ public enum SeckkillStateEnum {
      * @param state
      * @param stateInfo
      */
-    private SeckkillStateEnum(int state, String stateInfo) {
+    private SeckillStateEnum(int state, String stateInfo) {
         this.state = state;
         this.stateInfo = stateInfo;
     }
@@ -46,8 +46,8 @@ public enum SeckkillStateEnum {
      * @param index
      * @return
      */
-    public static SeckkillStateEnum stateOff(int index) {
-        for (SeckkillStateEnum state : values()) {
+    public static SeckillStateEnum stateOff(int index) {
+        for (SeckillStateEnum state : values()) {
             if (index == state.getState()) {
                 return state;
             }
